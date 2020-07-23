@@ -1,0 +1,46 @@
+                                                                         EXPERIMENT 9
+AIM:TO STUDY THE COMMANDS INVOLVING DATA CONSTRAINTS AND EXECUTE THE FOLLOWING QUERIES USING THESE COMMANDS:
+
+QUERY 1:
+ALTER TABLE EMP AND MAKE D_DEPT AS PRIMARY KEY:
+bts=# ALTER TABLE emp ADD PRIMARY KEY(d_dept);
+ERROR:  could not create unique index "emp_pkey"
+DETAIL:  Key (d_dept)=(cst) is duplicated.
+
+QUERY 2:
+ALTER TABLE DEPT AND ADD THE FOREIGN CONSTRAINT :
+bts=# ALTER TABLE dept ADD CONSTRAINT fk_e_comp FOREIGN KEY(e_comp) REFERENCES emp (e_comp);
+ALTER TABLE
+
+QUERY 3:
+ADD A CHECK CONSTRAINT IN THE TABLE EMP SUCH THAT SAL HAS THE VALUE BETWEEN 50000 and 7235527:
+bts=# ALTER TABLE emp ADD CHECK(sal BETWEEN 50000 and 7235527);
+ERROR:  check constraint "emp_sal_check1" is violated by some row
+
+QUERY 4:
+ALTER TABLE DEPT AND ADD UNIQUE CONSTRAINT TO COLUMN D_DEPT:
+bts=# ALTER TABLE dept ADD UNIQUE(d_dept);
+ERROR:  could not create unique index "dept_d_dept_key"
+DETAIL:  Key (d_dept)=(cst) is duplicated.
+
+QUERY 5:
+ADD A DEFAULT CONSTRAINT TO COLUMN E_CITY OF TABLE EMP WITH THE VALUE DELHI:
+bts=# ALTER TABLE emp ALTER e_city SET DEFAULT 'delhi';
+ALTER TABLE
+
+bts=# insert into emp values('9','prathmesh',default,'28763','texi','49824','enc');
+INSERT 0 1
+bts=# select * from emp;
+ e_id |  e_name   |  e_city   |  sal   |  e_comp   |  e_no  | d_dept 
+------+-----------+-----------+--------+-----------+--------+--------
+    1 | shikha    | mumbai    |  45000 | microsoft | 100000 | cst
+    2 | aman      | delhi     |  21000 | barcel    |  53400 | cst
+    3 | priya     | chennai   |  54200 | micros    |  50000 | it
+    4 | riya      | gudgaon   |  54340 | tcs       |   6378 | it
+    5 | tanvi     | bangalore | 649050 | infosys   | 637809 | ee
+    6 | mital     | mumbai    | 280000 | birla     |  66379 | ee
+    8 | amit      | delhi     |  28645 | tata      |  49876 | enc
+    7 | mithil    | gudgaon   |  28006 | barsley   | 686549 | enc
+    9 | prathmesh | delhi     |  28763 | texi      |  49824 | enc
+(9 rows)
+

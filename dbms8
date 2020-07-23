@@ -1,0 +1,104 @@
+AIM:TO STUDY THE COMMANDS FOR VIEWS AND EXECUTE THE FOLLOWING QUERIES USING THESE COMMANDS.
+QUERIES
+QUERY1:
+CREATE A VIEW HAVING ENAME AND ECITY :
+postgres=# \c bts;
+psql (12.0 (Ubuntu 12.0-2.pgdg16.04+1), server 9.5.19)
+You are now connected to database "bts" as user "postgres".
+bts=# create view employee as select e_id,e_name,e_city from emp;
+CREATE VIEW
+bts=# select * from employee;
+ e_id | e_name |  e_city  
+------+--------+----------
+    1 | shikha | mumbai
+    2 | priya  | chennai
+    3 | riya   | gudgoan
+    4 | tanvi  | banglore
+    8 | mithil | gudgoan
+    5 | amit   | delhi
+    6 | aman   | delhi
+    7 | mital  | delhi
+(8 rows)
+
+QUERY2:
+IN THE ABOVE VIEW CHANGE THE ECITY WITH DELHI WHERE ENAME IS MITAL:
+bts=# update emp set e_city='mumbai' where e_name='mital';
+UPDATE 1
+bts=# select * from employee;
+ e_id | e_name |  e_city  
+------+--------+----------
+    1 | shikha | mumbai
+    2 | priya  | chennai
+    3 | riya   | gudgoan
+    4 | tanvi  | banglore
+    8 | mithil | gudgoan
+    5 | amit   | delhi
+    6 | aman   | delhi
+    7 | mital  | mumbai
+(8 rows)
+
+QUERY3:
+CREATE A VIEW HAVING ATTRIBUTES FROM BOTH THE TABLES:
+bts=#create view employee2 as select e_name,project from emp,company;
+CREATE VIEW
+bts=# select * from employee2;
+ e_name |      project       
+--------+--------------------
+ shikha | mechanical
+ priya  | mechanical
+ riya   | mechanical
+ tanvi  | mechanical
+ mithil | mechanical
+ amit   | mechanical
+ aman   | mechanical
+ mital  | mechanical
+ shikha | software
+ priya  | software
+ riya   | software
+ tanvi  | software
+ mithil | software
+ amit   | software
+ aman   | software
+ mital  | software
+ shikha | printable airplane
+ priya  | printable airplane
+ riya   | printable airplane
+ tanvi  | printable airplane
+ mithil | printable airplane
+ amit   | printable airplane
+ aman   | printable airplane
+ mital  | printable airplane
+ shikha | aeronautic
+ priya  | aeronautic
+ riya   | aeronautic
+ tanvi  | aeronautic
+ mithil | aeronautic
+ amit   | aeronautic
+ aman   | aeronautic
+ mital  | aeronautic
+ shikha | rocket
+ priya  | rocket
+ riya   | rocket
+ tanvi  | rocket
+ mithil | rocket
+ amit   | rocket
+ aman   | rocket
+ mital  | rocket
+ shikha | steal
+ priya  | steal
+ riya   | steal
+ tanvi  | steal
+ mithil | steal
+ amit   | steal
+ aman   | steal
+ mital  | steal
+ shikha | agriculture
+ priya  | agriculture
+ riya   | agriculture
+ tanvi  | agriculture
+ mithil | agriculture
+ amit   | agriculture
+ aman   | agriculture
+ mital  | agriculture
+(56 rows)
+

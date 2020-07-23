@@ -1,0 +1,44 @@
+AIM:To study the grouping commands (group by,order by) and execute the following queries using this.
+bts=# select * from emp;
+ e_id | e_name |  e_city  |  sal  |  e_comp   |  e_no  | e_dept 
+------+--------+----------+-------+-----------+--------+--------
+    1 | shikha | mumbai   | 45000 | microsoft | 100000 | cst
+    6 | aman   | delhi    | 21000 | barcel    |   5001 | cst
+    2 | priya  | chennai  | 60000 | micros    |   3003 | it
+    3 | riya   | gudgoan  | 60000 | tcs       |   6378 | it
+    4 | tanvi  | banglore | 45000 | infosys   |   2378 | ee
+    7 | mital  | mumbai   | 28000 | birla     |    500 | ee
+    8 | mithil | gudgoan  | 22500 | birla     |  51076 | enc
+    5 | amit   | delhi    | 25500 | tata      |   5106 | enc
+(8 rows)
+QUERIES:
+QUERY 1:List all emp names in descending order.                                     ^
+bts=# select e_name from emp order by e_name desc;
+ e_name 
+--------
+ tanvi
+ shikha
+ riya
+ priya
+ mithil
+ mital
+ amit
+ aman
+(8 rows)
+QUERY 2:Find the no of employees in each dept where no of emp is greater then 30000.
+bts=# select e_no,e_dept from emp where e_no>6000;
+  e_no  | e_dept 
+--------+--------
+ 100000 | cst
+   6378 | it
+  51076 | enc
+(3 rows)
+QUERY 3:List all the dept names where average salary of department is greater than 30000rs. 
+bts=# select e_dept,avg(sal) from emp group by e_dept having avg(sal)>30000;
+ e_dept |        avg         
+--------+--------------------
+ it     | 60000.000000000000
+ cst    | 33000.000000000000
+ ee     | 36500.000000000000
+(3 rows)
+CONCLUSION:Successfully studied the grouping commands (group by,order by) and execute the following queries using this. 

@@ -1,0 +1,45 @@
+AIM:To study the aggregate function (sum,count,max,mean,average) and execute the following queries using this commands.
+Table:
+bts=# select * from emp;
+ e_id | e_name |  e_city  |  sal  |  e_comp   |  e_no  | e_dept 
+------+--------+----------+-------+-----------+--------+--------
+    1 | shikha | mumbai   | 45000 | microsoft | 100000 | cst
+    6 | aman   | delhi    | 21000 | barcel    |   5001 | cst
+    2 | priya  | chennai  | 60000 | micros    |   3003 | it
+    3 | riya   | gudgoan  | 60000 | tcs       |   6378 | it
+    4 | tanvi  | banglore | 45000 | infosys   |   2378 | ee
+    7 | mital  | mumbai   | 28000 | birla     |    500 | ee
+    8 | mithil | gudgoan  | 22500 | birla     |  51076 | enc
+    5 | amit   | delhi    | 25500 | tata      |   5106 | enc
+(8 rows)
+QUERY 1: FIND SUM AND AVERAGE OF SALARIES OF ALL EMPLOYEES IN CST DEPARTMENT.
+bts=# select sum (sal) from emp where e_dept='cst';
+  sum  
+-------
+ 66000
+(1 row)
+bts=# select AVG (sal) from emp where e_dept='cst';
+        avg         
+--------------------
+ 33000.000000000000
+(1 row)
+QUERY 2: FIND THE NUMBER OF ALL EMPLOYEES WHO LIVE IN DELHI. 
+bts=# select sum(e_no) from emp where e_city='delhi';
+  sum  
+-------
+ 10107
+(1 row)
+QUERY 3: FIND MAXIMUM AND MINIMUM SALARY IN IT DEPARTMENT.
+bts=# select max(sal) from emp where e_dept='it';
+  max  
+-------
+ 60000
+(1 row)
+bts=# select min(sal) from emp where e_dept='it';
+  min  
+-------
+ 60000
+(1 row)
+CONCLUSION:Successfully studied aggregate functions.
+ 
+
